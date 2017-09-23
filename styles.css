@@ -1,17 +1,45 @@
 		body{
 
 		    font-family: 'Montserrat', sans-serif;
+		    background-color:pink;
+
+
+		}
+		#content{
+			margin: auto;
+			width: 80%;
+			background-color:white;
 		}
 
-		#my-header {
-			color: #FF0000;
-			font-size: 22px;
+		ul{
+			list-style:none;
+
 		}
 
-		.my-list-item {
-			font-size: 16px;
+		ul li{
+			display:inline-block;
 		}
 
-		.my-list-item a:hover {
-			color:#00FF00;
+		ul img{
+
+			width: 200px;
+		}
+
+		img{
+			width:800px;
+		}
+
+		p{
+			width:500px;
+			padding-left:100px;
+		}
+
+		#header{
+			background-color:black;
+			color:white;
+		}
+
+		h1, h2, h3{
+			margin:0;
+			padding:0;
 		}

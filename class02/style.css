@@ -1,0 +1,43 @@
+		
+
+		header{
+			background:#000;
+			height:44px;
+		}
+
+		header a{
+			color: #fff;
+		}
+
+		header ul {
+			list-style:none;
+			margin:0;
+			padding:0;
+		}
+
+		header ul li{
+			float: left;
+			width:20%;
+			margin:10px 0;
+		}
+		.section {
+			padding: 10px;
+			color: #FFF;
+
+		}
+		#section1{
+			background: #F00;
+			
+		}
+		#section2{
+			background: #FF0;
+			color: #000;
+		
+		}
+		#section3{
+			background: #00F;
+
+		}
+
+		
+		
