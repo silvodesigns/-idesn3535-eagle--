@@ -17,10 +17,11 @@
 						console.log(undefined);
 						console.log(javascriptInfo);
 
-						function alwaysReturndog(input){
 
-							while(input > 0);
-						}
+						function echoInput(input){
+							var myInput = document.getElementById("myInput");
+							
+					};
 					</script>
 
 
@@ -29,5 +30,10 @@
 				</head>
 					<body>
 						<h1>Javascript</h1>	
-					</body>
+						<form>
+							<input type="text" id="myInput"/>
+							<input type="submit" value="Submit" onClick="echoInput(myInput)">
+						</form>
+
+					  </body>
 				</html> 

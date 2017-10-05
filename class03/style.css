@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: green;
+}
+#header {
+    background-color: pink;
+    height: 100px;
+}
+#menu {
+    background-color: red;
+    height: 50px;
+}
+ul {
+    list-style: none;
+    display: flex;
+    padding-top: 5px;
+}
+li {
+    background-color: blue;
+    flex-grow: 1;
+    height: 40px;
+    padding: 3px;
+}
+.featured {
+    margin-top: 100px;
+}
+#entry {
+    background-color: lightgreen;
+    height: 200px;
+    display: flex;
+    margin-top: 20px;
+}
+#visual {
+    background-color: orange;
+    flex-grow: 3;
+    display: flex;
+    justify-content: flex-end;
+}
+#triangle-topright {
+    width: 0;
+    height: 0;
+    border-top: 100px solid green;
+    border-left: 100px solid transparent;
+}
+#description {
+    flex-grow: 1;
+}
+#footer {
+    background-color: black;
+    height: 300px;
+}
+#sidebar{
+    visibility:none;
+}
+/*CSS BELOW WILL CHANGE LAYOUT FOR TABLET SIZES SCREENS*/
+@media only screen and (min-width: 500px) {
+    #header {
+        display: flex;
+    }
+    #logo {
+        flex-grow: 1;
+    }
+    li {
+        margin: 2px;
+    }
+    #menu {
+        flex-grow: 4;
+    }
+    #news {
+        display: flex;
+    }
+    #news div {
+        flex-grow: 1;
+        flex-direction: column;
+        margin: 10px;
+    }
+}
+/*CSS BELOW WILL CHANGE LAYOUT FOR DESKTOP SIZES SCREENS*/
+@media only screen and (min-width: 980px) {
+    #wrapper {
+        display: flex;
+    }
+    #content {
+        flex-grow: 4;
+    }
+    #sidebar {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 2;
+        visibility:visible;
+    }
+    #sidebar div {
+        flex-direction: column;
+        margin: 10px;
+    }
+}
