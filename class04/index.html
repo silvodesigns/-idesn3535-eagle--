@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>More Javascript!</title>
+    <script>
+        const me = "darkness my old friend";
+
+
+    </script>
+    <style>
+
+    #circle{
+    	border:1px solid black;
+    	height: 200px;
+    	width:200px;
+    	border-radius: 50%;
+    }
+
+    #circle.red{background-color:#c40f0f;}
+    #circle.blue{background-color:#0624ba;}
+    #circle.yellow{background-color:#e8dc23;}
+    #circle.red.blue{background-color:#800080;}
+    #circle.red.yellow{background-color:#ffa500;}
+    #circle.yellow.blue{background-color:#008000;}
+    #circle.red.yellow.blue{background-color:#000;}
+    .enabled{border: 1px solid black;}
+
+    input{
+
+    	width:50px;
+    	height:50px;
+    	background-color:white;
+    }
+
+
+    </style>
+
+</head>
+<body>
+<h1> Color Mixer</h1>
+
+    <input type="button" value="red" id="red">
+    <input type="button" value="blue" id="blue">
+    <input type="button" value="yellow" id="yellow">
+
+
+    <div id="circle">
+    </div>
+
+    <script>
+    //store the input in an array and then apply the event listener to each item
+    var button= document.getElementsByTagName("input");
+   		for(i = 0; i < 3; i++){
+   	 button[i].addEventListener("click", changeColor);
+     }
+
+     //This function changes the color of the cirlcle
+    function changeColor(e){
+    	//var cirlce stores the value of the HTML element 
+    	var circle = document.getElementById("circle");
+    	//the following line toggles the value of the input button
+    	circle.classList.toggle(e.currentTarget.value);
+    	//the following lane toggles the background color of the current button being clicked
+    	e.currentTarget.classList.toggle("enabled");
+    	console.log(circle.style.background);
+
+
+
+
+    }
+
+
+
+
+    </script>
+
+</body>
+</html>
