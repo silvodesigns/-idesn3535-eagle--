@@ -1,0 +1,76 @@
+	h1, h2, h3 {
+						font-family: 'Anton', sans-serif;
+						margin:0;
+						padding:0;
+						
+					}
+					p{
+						color:white;
+						font-family: 'Oxygen', sans-serif;
+						width:50%;
+						font-size:1.1em;
+						margin:0;
+					}
+
+					h3, p{
+						margin-left:40%;
+					}
+
+
+					.logo{
+						height:80px;
+						width:80px;
+					}
+					
+					#bar{
+						display:flex;
+						height:30vh;
+						background-color:black;
+						color:white;
+
+					}
+
+					#main-div{
+							background-color:black;
+							color:white;
+
+					}
+
+					
+				
+					.section{
+						height:200px;
+						opacity:1;
+						display:flex;
+						
+					}
+
+					
+				
+					#class01{
+						background-color:yellow;
+					}
+					#class02{
+					    background-color:orange;
+
+					}
+					#class03{
+					    background-color:pink;
+
+					}
+					#class04{
+					    background-color:purple;
+
+					}
+
+					.caption{
+						width:100%;
+						height:50%;
+						background: rgba(0,0,0, 0.2);
+						color: white;
+						align-self:flex-end;
+						-webkit-transition:height 0.2s ease-in;
+					}
+					.caption:hover{
+						height:60%;
+					}
