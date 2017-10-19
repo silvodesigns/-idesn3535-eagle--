@@ -1,0 +1,91 @@
+body{
+	background: url('coffeeshop.jpg');
+}
+
+ul{
+	list-style:none;
+}
+#container{display:flex;}
+#info{
+	font-family: 'Fascinate Inline', cursive;
+
+}
+#info h1{
+	font-size:6em;
+}
+#frame{
+	width:400px;
+	background-color:#ff931e;
+	font-family: 'Orbitron', sans-serif;
+}
+
+#screen{
+	display:flex;
+	background-color:#d9e021;
+
+}
+
+
+#options{
+	display:flex;
+	justify-content:space-between;
+	margin-top:20px;
+}
+
+#options div{
+	
+	border:1px solid black;
+	width:20%;
+	text-align:center;
+
+}
+
+#buttons{
+	display:flex;
+	flex-wrap:wrap;
+	margin-top:50px;
+	margin-left:30px;
+}
+
+.enabled{background-color:white;}
+
+
+.number{
+	border-radius:50%;
+	background-color:pink;
+	border:1px solid black;
+	width:100px;
+	height:100px;
+	text-align:center;
+	font-size:2em;
+}
+
+.number:hover{
+	opacity:0.5;
+	cursor:pointer;
+}
+#equals{
+	background-color:green;
+	text-align:center;
+	width:100px;
+	height:100px;
+	border-radius:50%;
+}
+
+#reset{
+	background-color:red;
+	text-align:center;
+	width:100px;
+	height:100px;
+	border-radius:50%;
+}
+
+#equals:hover{
+	opacity:0.5;
+	cursor:pointer;
+}
+#reset:hover{
+	opacity:0.5;
+	cursor:pointer;
+
+}

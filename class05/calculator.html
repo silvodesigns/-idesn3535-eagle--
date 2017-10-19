@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>IDESN 3535: CALCULATOR</title>
+		<link href="https://fonts.googleapis.com/css?family=Fascinate+Inline" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+		<link href="style.css" rel="stylesheet">
+					</head>
+					<body>
+<div id="container">
+							<div id ="frame">
+								<div id="screen">
+								<ul>
+									<li><p>TOTAL</p>
+									<li><p id="total"></p></li>
+									
+								</ul>
+								<ul>
+									
+									<li><p>PERCENTAGE%</p></li>
+									<li><p id="tips"></p></li>
+								</ul>
+								<ul>
+									<li><p> TIP</p></li>
+									<li><p id="final"></p></li>
+								</ul>
+
+								</div>
+								<div id="options">
+									<div id="5" class="option">5%</div>
+									<div id="10" class="option">10%</div>
+									<div id="15" class="option">15%</div>
+								</div>
+								<div id="buttons">
+
+									<div id="1" class="number"/><p>1</p></div>
+									<div id="2" class="number"/><p>2</p></div>
+									<div id="3" class="number"/><p>3</p></div>
+									<div id="4" class="number"/><p>4</p></div>
+									<div id="5" class="number"/><p>5</p></div>
+									<div id="6" class="number"/><p>6</p></div>
+									<div id="7" class="number"/><p>7</p></div>
+									<div id="8" class="number"/><p>8</p></div>
+									<div id="9" class="number"/><p>9</p></div>
+									<div id="0" class="number"/><p>0</p></div>
+
+								
+								<div id="equals">
+									<h1>=</h1>
+								</div>
+								<div id="reset">
+									<h1>reset</h1>
+								</div>
+								</div>
+							</div>
+							<div id="info">
+							<h1> I MADE YOUR COFFEE! AREN'T YOU GOING TO TIP ME?</h1>
+							</div>
+		</div>
+						
+						<script>
+						//select all the buttons with numbers and add event listener to them
+						var buttons= document.getElementsByClassName("number");
+				   		for(i = 0; i < 10; i++){
+					   	buttons[i].addEventListener("click", collectAmount);
+					     }
+
+					     //select the options for tips and add event listener to them
+					    var options= document.getElementsByClassName("option");
+				   		for(i = 0; i < 3; i++){
+					   	options[i].addEventListener("click", collectOption);
+					     }
+					    //select the equal button in calculator and add event listener to it
+					    var showResults= document.getElementById("equals");
+					   	showResults.addEventListener("click", updateResults);
+
+
+					   	var reset = document.getElementById("reset");
+					   	reset.addEventListener("click",resetValues);
+					     
+
+
+
+					     var amount=[];//create an empty array where amount input by user is stored
+					     var option='';//create an empty variable where the option percentage for tips is recorded
+					     var total = document.getElementById('total');
+					     var tips =document.getElementById('tips');
+					     var final = document.getElementById('final');
+
+					     //This function collects the amount total spent by user
+					    function collectAmount(e){
+					    	
+					    	amount.push(e.currentTarget.id);
+ }
+ 					// this functions collects how much percentage of the amount spend the user wants to tip
+  					 function collectOption(e){
+					    	
+					    	option = e.currentTarget.id;
+							e.currentTarget.classList.toggle("enabled");
+							tips.innerHTML="";
+					    	tips.append(option);
+ }					//this function updates the results in the DOM
+					function updateResults(e){
+
+						if(option == ""){
+							alert("you have to select how much percentage you want to tip ");
+
+						}
+
+						for(i = 0; i < amount.length; i++){
+
+  							total.append(amount[i]);
+
+  					     }
+
+  					     var percentage = tips.innerHTML;
+  					     parseInt(percentage);
+  					     var newTotal = total.innerHTML;
+  					     parseInt(newTotal);
+  					     var finalTip = percentage /100 * newTotal;
+
+  					     final.append(finalTip);
+  					    
+
+
+  					    
+							
+					    	
+ }
+ 					function resetValues(e){
+ 							amount = [];
+ 							option = '';
+ 							total.innerHTML ="";
+ 							tips.innerHTML ="";
+ 							final.innerHTML ="";
+
+
+
+
+
+ 					}
+
+
+						</script>
+						
+					</body>
+				</html> 
