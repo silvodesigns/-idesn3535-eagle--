@@ -96,7 +96,14 @@
   					 function collectOption(e){
 					    	
 					    	option = e.currentTarget.id;
-							e.currentTarget.classList.toggle("enabled");
+					    	
+					    	
+					         
+							
+							for(i = 0; i < 3; i++){
+							options[i].classList.remove("enabled");
+						    }
+						    e.currentTarget.classList.add("enabled");
 							tips.innerHTML="";
 					    	tips.append(option);
  }					//this function updates the results in the DOM

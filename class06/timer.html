@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Online Timer</title>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+
+<div id="timer">
+	<span id="hours">00</span>
+	<span id="minutes">00</span>
+	<span id="seconds">00</span>
+</div>
+<button id="start-button">Start</button>
+<div id="control-buttons">
+	<div>
+		<div>Hours</div>
+		<button class="control-button" data-amount="-3600">-</button>
+		<button class="control-button" data-amount="3600">+</button>
+	</div>
+	<div>
+		<div>Minutes</div>
+		<button class="control-button" data-amount="-60">-</button>
+		<button class="control-button" data-amount="60">+</button>
+	</div>
+	<div>
+		<div>Seconds</div>
+		<button class="control-button" data-amount="-1">-</button>
+		<button class="control-button" data-amount="1">+</button>
+	</div>
+</div>
+
+<script>
+let secs = 0;
+
+function displayTime(amountOfSeconds){
+//define temporary variables
+let hrs=0;
+let mins = 0;
+
+
+//while amount of seconds is greater than or equal to 3600
+while(amountOfSeconds >=3600){
+	//add one hour
+    hrs++
+
+    //we've added an hour, lets delete 3600 seconds
+    amountOfSeconds = amountOfSeconds -3600;
+
+}
+
+//while amount of seconds is greater than or equal to 60
+while(amountOfSeconds >=60){
+	//adds one hour
+	mins++;
+	amountOfSeconds = amountOfSeconds -60;
+
+}
+
+	$("#hours").text(hrs);
+	$("#minutes").text(mins);
+	$("#seconds").text(amountOfSeconds);
+}
+$(document).ready(function(){
+
+
+	$(".control-button").on('click', function(){
+		//get the amount defined in the data atribute of the button that was clicked on
+			const amount=parseInt($(this).data("amount"));
+
+			//add that amount to our global seconds variable
+			secs += amount;
+
+
+			secs =Math.max(secs,0);
+			displayTime(secs);
+
+	});
+
+});
+
+let timer;
+function tick(){
+
+
+	//subtract one second
+	secs--
+
+	secs =Math.max(secs,0);
+	displayTime(secs);
+}
+$("#start-button").on('click',function(){
+
+// if timer is already running, lets stop it
+if(timer){
+	clearInterval(timer);
+	timer= false;
+}else{
+	//start the timer
+	timer= setInterval(tick,1000);
+}
+
+});
+</script>
+
+
+
+
+
+</body>
+
+
+</html>

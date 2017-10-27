@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+	<head>
+		<title>IDESN 3535-01: AWP</title>
+		<link rel="stylesheet" type="text/css" href="normalize.css">
+		<link rel="stylesheet" type="text/css" href="classCss.css">
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+		<!--Jquery -->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script>
+		$(document).ready(function(){
+			$.ajax({
+				url: "http://www.bvandorn.com/idesn-3535/schedule.json",
+				data: {},
+				success: function (response){
+					//what happends when we get reponse
+					
+					//Loop through every class
+					for(let i=0; i< response.classes.length; i++){
+						//currentClass = week01 week02 and so on
+						const currentClass = response.classes[i];
+						console.log(response.classes[i]);
+						//create a div element via Javascript for our class row
+								const classDiv = document.createElement('div');
+								classDiv.id = "classes";
+								const dateDiv  = document.createElement('div');
+								dateDiv.id="dates"
+								const agendaDiv  = document.createElement('div');
+								agendaDiv.id="agendas";
+								const homeworkDiv = document.createElement('div');
+								homeworkDiv.id="homeworks";
+								const notesDiv = document.createElement('div');
+								notesDiv.id="notes";
+								const number = "CLASS";
+								dateDiv.innerHTML +=`CLASS ${i}<br>${currentClass.date}`;
+								//Polulate the agenda div with the amount of items in the array
+								currentClass.agenda.forEach(function(currentAgendaItem){
+
+										const paragraph = document.createElement('p');
+										paragraph.id="pa";
+										agendaDiv.append(paragraph);
+										paragraph.innerHTML += currentAgendaItem + "<br>";
+
+								});
+								//Polulate the homework div with the amount of items in the array
+								currentClass.homework.forEach(function(currentHomeworkItem){
+
+										homeworkDiv.innerHTML += "<p>" +currentHomeworkItem+"</p>" + "<br>";
+
+								});
+								//Polulate the links to notes div with the amount of items in the array if available
+								if(currentClass.links){
+									currentClass.links.forEach(function(currentLinkItem){
+
+											
+											notesDiv.innerHTML +=`<a href="${currentLinkItem.link}">${currentLinkItem.name}<a/><br>`;
+											classDiv.append(notesDiv);
+
+									});
+							}
+								//Append to class scheudle div a div containing information for each class
+								$("#class-schedule").append(classDiv);
+								//append the date
+								classDiv.append(dateDiv);
+								classDiv.append(agendaDiv);
+								classDiv.append(homeworkDiv);
+								
+									}
+							}
+						});
+		});
+		</script>
+	</head>
+	<body>
+		<h1 class="title">IDESN 3535-01: Advanced Web Projects</h1>
+		<a href="http://bit.ly/2gEbCrd" target="_blank">Syllabus</a>
+		
+		<div id="class-schedule">
+			
+		</div>
+	</body>
+</html>

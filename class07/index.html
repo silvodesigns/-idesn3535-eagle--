@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<head>
+	<title>Tables</title>
+</head>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="  crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+	
+	    const thereAreDogs = true;
+        const thereAreCats = false;
+
+        // && means AND
+        // || means OR
+        if (thereAreDogs || thereAreCats) {
+          console.log("There are Dogs and cats!");
+        } else if (thereAreDogs) {
+          console.log("Just Dogs");
+        } else if (thereAreCats) {
+          console.log("Just Cats")
+        } else {
+          console.log("No animals");
+        }
+});
+
+const typeOfBirds = ["Parrot", "Pinch","Dirt Bird","Pidgean","Cardinal","Chicken","Kevin"];
+
+let i;
+for (i =0; i < typeOfBirds.length; i++){
+	const bird = typeOfBirds[i];
+	console.log(bird);
+}
+</script>
+<body>
+	<h1>Tables</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Column1</th>
+				<th>Column2</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>DATA 1</td>
+				<td>DATA 1</td>
+				
+			</tr>
+			<tr>
+				<td>DATA 1</td>
+				<td>DATA 1</td>
+				
+			</tr>
+			<tr>
+				<td>DATA 1</td>
+				<td>DATA 1</td>
+			</tr>
+			<tr>
+				<td>DATA 1</td>
+				<td>DATA 1</td>
+			</tr>
+			<tr>
+				<td>DATA 1</td>
+				<td>DATA 1</td>
+			</tr>
+			<tr>
+				<td>DATA 1</td>
+				<td>DATA 1</td>
+			</tr>
+			<tr>
+				<td>DATA 1</td>
+				<td>DATA 1</td>
+			</tr>
+			<tr>
+				<td>DATA 1</td>
+				<td>DATA 1</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

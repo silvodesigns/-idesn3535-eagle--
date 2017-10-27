@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="  crossorigin="anonymous"></script>
+
+
+<script>
+$(document).ready(function(){
+
+
+	const pokeId =149;
+	//function that takes an object
+	const url ="https://pokeapi.co/api/v2/pokemon/";
+	$.ajax({
+
+		url: url + pokeId,
+		//function, call url, url reponds with data, if successfull call function with the data
+		success: function(data){
+			console.log(data);
+			$("#name").text(data.name);
+
+			const imgURL =data.sprites.front_shiny;
+			$("body").append(`<img src="${imgURL}"/>`);
+
+			data.types.forEach(function(type){
+
+				console.log(type.type.name);
+				});
+
+		
+
+		}
+
+	});
+
+	
+});
+
+
+</script>
+<body>
+	<h1 id="name"></h1>
+</body>
+</html>

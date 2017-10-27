@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+	<head>
+		<title>IDESN 3535-01: AWP</title>
+		<link rel="stylesheet" type="text/css" href="normalize.css">
+		<link rel="stylesheet" type="text/css" href="classCss.css">
+		<!--Jquery -->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script>
+		$(document).ready(function(){
+			$.ajax({
+				url: "http://www.bvandorn.com/idesn-3535/schedule.json",
+				data: {},
+				success: function (response){
+					//what happends when we get reponse
+					
+					//Loop through every class
+					for(let i=0; i< response.classes.length; i++){
+						const currentClass = response.classes[i];
+						console.log(response.classes[i]);
+						//create a <tr> element via Javascript for our class row
+								const classRow = document.createElement('tr');
+								//Setup the Class # and Date for our first column
+								const dateCol = document.createElement('td');
+								dateCol.innerHTML = "Class " + i + "</br>" + currentClass.date;
+								classRow.append(dateCol);
+								$("#class-schedule > tbody").append(classRow);
+								//setup the agenda column
+								const agendaCol = document.createElement('td');
+								//our agenda is an unordered list
+								const agendaList = document.createElement('ul');
+								//We can use forEach as another way to loop
+								currentClass.agenda.forEach(function(agendaItem){
+									//create a list items, set the text as our agendItem
+									const agendaListItem = document.createElement('li');
+									agendaList.innerText=agendaItem;
+									//Append our <li> to our <ul>
+											agendaList.append(agendaListItem);
+										});
+									
+										  //append our <li> to our <ul>
+											agendaCol.append(agendaList);
+											//add the new column to the class row
+											classRow.append(agendaCol);
+										//////////////////////////////////////////////////HOMEWORK
+										//setUp homework column
+										const hwCol = document.createElement('td');
+										//create List of homework
+										const hwList = document.createElement('ul');
+										//loop through currenrtclass homework
+										currentClass.homework.forEach(function(hwItem){
+											//create a list of the homework items
+											const hwListItem = document.createElement('li');
+											hwList.innerText =hwItem;
+											//append our <li> to the <ul>
+											hwList.append(hwListItem);
+
+										});
+
+										hwCol.append(hwList);
+										classRow.append(hwCol);
+
+										//////////////////////////CLASSNOTES
+										const notesCol = document.createElement('td');
+										const notesList = document.createElement('ul');
+										if(currentClass.links){//not everyClass has notes
+											currentClass.links.forEach(function(link){
+											notesList.innerHTML += `<li><a href="${link.link}">${link.name}<a/></li>`;
+
+											});
+										}
+										notesCol.append(notesList);
+										classRow.append(notesCol);
+										}
+									}
+								});
+							});
+					</script>
+				</head>
+				<body>
+					<h2>Syllabus</h2>
+					<a href="http://bit.ly/2gEbCrd" target="_blank">Syllabus</a>
+					<h2>Advanced Web Projects</h2>
+					<table id="class-schedule">
+					<thead>
+						<tr>
+							<th>Class</th>
+							<th>Agenda</th>
+							<th>Homework</th>
+							<th>Class Notes</th>
+						</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</body>
+			</html>

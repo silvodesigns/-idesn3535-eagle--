@@ -1,0 +1,74 @@
+
+body{
+	font-family: 'Oswald', sans-serif
+}
+a{
+	text-decoration:underline black;
+	color:black;
+	padding:2px;
+}
+
+.title{
+	font-size:4em;
+}
+#classes{
+	background-color: rgb(246,209,245);
+	height:200px;
+	margin-bottom:30px;
+	display:flex;
+
+}
+
+#dates{
+	font-weight:700;
+	font-size:1.5em;
+
+}
+
+
+
+
+
+#agendas{
+	flex-grow:2;
+	text-align:right;
+}
+#agendas p{
+	font-size:0.8em;
+}
+#homeworks{
+	flex-grow:2;
+	text-align:left;
+}
+
+#homeworks p{
+	width:200px;
+	font-size:0.8em;
+	padding-left:10px;
+	color:white;
+}
+#notes{
+
+	order:3;
+}
+
+@media screen and (max-width:690px){
+
+
+	#classes{
+		flex-direction:column;
+		height:auto;
+
+	}
+
+	#homeworks, #notes, #agendas{
+		flex-grow:1;
+		text-align:left;
+		height:150px;
+		font-size:1.1em;
+	}
+
+	#homeworks p{
+		padding:0;
+	}
+}
