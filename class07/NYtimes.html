@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<head>
+	<title>
+		NY time API
+	</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="nystyle.css" rel="stylesheet">
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script>
+	$(document).ready(function(){
+		var url="https://api.nytimes.com/svc/search/v2/articlesearch.json";
+
+		//API KEY
+		var apikey="8f2fdf97e9174f2c855cba03d7cc30cd";
+
+		$.ajax({
+			url: url,
+			data: {
+				'api-key' :apikey
+			},
+			success:function(result){
+				console.log(result);
+				const articles = result.response.docs;
+				console.log(articles);
+
+				const articleList = document.createElement('ul');
+				$('#main').append(articleList);
+
+				articles.forEach(function(article){
+
+					const articleItem = document.createElement('li');
+
+					const articleHeader = document.createElement('h2');
+					articleHeader.innerHTML = article.headline.main;
+					articleItem.append(articleHeader);
+
+					articleList.append(articleItem);
+					
+					// if img available
+					if(article.multimedia.length > 0 && article.multimedia[0].type === "image"){
+						const articleImage = document.createElement('img');
+					articleImage.src ="https://nytimes.com/" + article.multimedia[0].url;
+					articleItem.append(articleImage);
+					articleItem.classList.add('has-image');
+
+					}
+
+					const articleSummary = document.createElement('p');
+					articleSummary.innerHTML = article.snippet;
+					articleItem.append(articleSummary);
+
+					const pubDate = document.createElement('div');
+					pubDate.classList.add('pub-date');
+					pubDate.innerText = new Date(article.pub_date);
+					articleItem.append(pubDate);
+
+					const articleLink = document.createElement('a');
+					articleLink.classList.add('link');
+					articleLink.append("Go to article");
+					$(articleLink).attr( "href", article.web_url);
+ 
+					articleItem.append(articleLink);
+				});
+			},
+			error: function(err){
+				throw err;
+			}
+
+
+		})
+
+
+
+	});
+	</script>
+</head>
+<body>
+<div id="header">
+<h1> KEEPING UP WITH THE NEW YORK TIMES</h1>
+</div>
+<div id="main">
+</div>
+</body>
+</html>
