@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Idk</title>
+	 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	 <script>
+	 //document ready needs to be a function
+	 $(document).ready(function(){
+
+	 		$("#myrange").on('change',function(){
+	 			//alert($(this).val());
+
+	 		//display  value on page
+	 		$("#myValue").text($(this).val());
+	 		});
+
+
+
+	 });
+	 </script>
+	</head>
+	<body>
+
+
+	<input id="myrange" type="range" min="0" max="10" step="1">
+	<div id="myValue"></div>
+
+
+
+
+
+	</body>
+</html>

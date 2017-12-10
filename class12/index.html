@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Ratings API</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="./mygrading.js"></script>
+		<script>
+			function renderRatings(){
+				$('#ratings').html("");
+
+				const ratings = getRatings().ratings;
+				console.log(ratings);
+				ratings.forEach(function(r){
+					if(r){
+						const row =document.createElement('div');
+						row.innerText =`Starts: ${r.starts} Comment: ${r.comment}`;
+						$("#ratings").append(row);
+					}
+
+				});
+
+			}
+			$(document).ready(function(){
+				renderRatings();
+				$("#rateit").on('click', function(){
+
+					const startAmount =parseInt($("#my-dropdown").val());
+					const comment =$("#my-comment").val();
+					addRating({starts: startAmount, comment: comment});
+					renderRatings();
+					$("#my-comment").val("");
+					$("#my-dropdown").val("");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Ratings API</h1>
+		<div id="ratings">
+
+		</div>
+		<select id="my-dropdown">
+			<option value="1">One</option>
+			<option value="2">Two</option>
+			<option value="3">Three</option>
+			<option value="4">Four</option>
+			<option value="5">Five</option>
+		</select>
+		<input id="my-comment"/>
+		<button id="rateit">Rate it</button>
+	</body>
+</html>

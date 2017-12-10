@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <link href="../normalize.css" rel="stylesheet" />
+    <script src="template-engine.js"></script>
+     <script src="template.js.html"></script>
+     <link href="styles.css" rel="stylesheet" />
+    <script>
+    	$(document).ready(function(){
+    		$("body").prepend(getTemplate(headerTemplate,{title:'Blog',class:'blog'}));
+    		$("body").append(getTemplate(footerTemplate,{title:'home', class:'footer'}));
+
+    	});
+    </script>
+
+  </head>
+
+  <body>
+    <p>This is my blog.</p>
+  </body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+	<title>IRate</title>
+	<meta name="viewport" content= "width=device-width" initial-scale="1">
+	<link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/ham.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="js/template-engine.js"></script>
+	<script src="js/template.js.html"></script>
+	<link rel="stylesheet" type="text/css" href="slick/slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="slick/slick/slick-theme.css"/>
+	<script type="text/javascript" src="slick/slick/slick.min.js"></script>
+	<script>
+	//this function adds the change class to all divs with bar class inside hamburger div
+	function Menu(x) {
+	x.classList.toggle("change");
+		}
+
+	$(document).ready(function(){
+		//template for header and footer
+
+			$("#wrapper").prepend(getTemplate(headerTemplate,{title:'Home',class:'home'}));
+            $("body").append(getTemplate(footerTemplate,{title:'home', class:'footer'}));
+            $("body").append(getTemplate(slideInTemplate,{title:'home', class:'home'}));
+
+		//this function initiates the carousel slider using slick plugin
+	
+		$('.featured').slick({
+			arrows:false,
+			autoplay: true,
+			autoplaySpeed: 2000,
+			dots:true
+		});
+		//this click function makes the slide-in menu visible when the hamburger is clicked
+		$("#hamburgerMenu").click(function(){
+				$(".slide-in").toggleClass("visibleNow");
+				$("#wrapper").toggleClass("blur");
+				});
+		//this click function shows the menu items belonging to the category clicked in the slider in menu
+		$(".first-item").click(function(){
+			$(this).nextAll().toggleClass("show-menu-items");
+		});
+	});
+		
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="jumbo">
+			<div class="featured-label">
+				<h3>FEATURED</h3>
+			</div>
+			<div class="featured">
+				<div>
+					<img src="img/tombraiderJ.jpg" width="1000" height="300">
+					<div class="read-label"><img  class="read-icon" src="img/read.svg"/><h2>Read</h2></div>
+				</div>
+				<div>
+					<img src="img/marioJ.jpg" width="1000" height="300">
+					<div class="read-label"><img  class="read-icon" src="img/read.svg"/><h2>Read</h2></div>
+				</div>
+				<div>
+					<img src="img/pokemonJ.jpg" width="1000" height="300">
+					<div class="read-label"><img  class="read-icon" src="img/read.svg"/><h2>Read</h2></div>
+				</div>
+				<div>
+					<img src="img/callofdutyJ.jpg" width="1000" height="300">
+					<div class="read-label"><img  class="read-icon" src="img/read.svg"/><h2>Read</h2></div>
+				</div>
+				<div>
+					<img src="img/packmanJ.jpg" width="1000" height="300">
+					<div class="read-label"><img  class="read-icon" src="img/read.svg"/><h2>Read</h2></div>
+				</div>
+			</div>
+		</div>
+		<div id="content">
+			<div class="reviews">
+				<div class="sections"><h3>LATEST REVIEWS</h3></div>
+				<div class="latest-review">
+					<img class="review-pic" src="img/reviews.jpg">
+					<div class="caption">
+						<a href="#"><h1>Rise of the Tomb Raider:</h1></a>
+						<h2>A hero is reborn</h2>
+					</div>
+				</div>
+				<div class="past-reviews">
+					<img class="review-pic" src="img/marioM.jpg">
+					<div class="caption">
+						<a href="#"><h1>Super Mario Oddysey:</h1></a>
+					<h2>An instant MasterPiece</h2></div>
+				</div>
+				<div class="past-reviews">
+					<img class="review-pic" src="img/PokemonM.jpg">
+					<div class="caption">
+						<a href="#"><h1>Pokemon B&W:</h1></a>
+					<h2>Perfect twist to a classic</h2></div>
+				</div>
+				<div class="past-reviews">
+					<img  class="review-pic" src="img/callofdutyM.jpg">
+					<div class="caption">
+						<a href="#"><h1>Call Of Duty:</h1></a>
+					<h2>WWII</h2></div>
+				</div>
+				<div class="past-reviews">
+					<img  class="review-pic"src="img/packmanM.png">
+					<div class="caption">
+						<a href="#"><h1>Packman Unpacked:</h1></a>
+					<h2>Retro to the max</h2></div>
+				</div>
+			</div>
+			<div class="news">
+				<h3>NEWS</h3>
+				<a href="#"><h5>Nintendo Switch:release date</h5></a>
+				<a href="#"><h5>Sony tops monthly sales</h5></a>
+				<a href="#"><h5>Xbox One S: new model</h5></a>
+				<a href="#"><h5>Pokemon Go: global success</h5></a>
+				<a href="#"><h5>Naruto new generations: new</h5></a>
+				<a href="#"><h5>Nintendo Switch:release date</h5></a>
+				<a href="#"><h5>Sony tops monthly sales</h5></a>
+				<a href="#"><h5>Xbox One S: new model</h5></a>
+				<a href="#"><h5>Pokemon Go: global success</h5></a>
+				<a href="#"><h5>Naruto new generations: new</h5></a>
+				
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>
