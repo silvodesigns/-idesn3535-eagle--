@@ -1,16 +1,13 @@
 body {
     font-family: 'Roboto', sans-serif;
+    max-width:100%;
     overflow-x: hidden;
     background-color: white;
+
 }
 
 img{
 	max-width:100%;
-}
-
-.blur {
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
 }
 
 a {
@@ -20,17 +17,33 @@ a {
 a:hover {
     color: #353535;
 }
+ul{
+    list-style:none;
+}
 
 
 /*styles corcerning the header*/
 
 #wrapper {
     width: 80%;
-    margin: 0 auto;
+    margin:0 auto;
+    
 }
+.towrapper{
 
+    -webkit-transform:translate3d(260px, 0, 0);
+    -moz-transform:translate3d(260px, 0, 0);
+    -o-transform:translate3d(260px, 0, 0);
+    transform:translate3d(260px, 0, 0);
+    -moz-transition:all 200ms ease-in;
+    -webkit-transition:all 200ms ease-in;
+    -o-transition:all 200ms ease-in;
+    transition:all 200ms ease-in;
+
+}
 #header {
     display: flex;
+    flex-direction:row-reverse;
 }
 
 #block1,
@@ -39,9 +52,13 @@ a:hover {
     padding: 25px;
 }
 
+#block1{
+    display:flex;
+    justify-content:flex-end;
+}
 #block2 {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 .logo {
@@ -102,6 +119,12 @@ a:hover {
     width: 50px;
 }
 
+.featured-image{
+
+    width:1000px;
+    height:300px;
+
+}
 
 /*styles corcerning the content section of site | news and reviews*/
 
@@ -113,16 +136,39 @@ a:hover {
 
 .reviews {
     width: 70%;
+
 }
 
 .news {
     width: 20%;
+    display:flex;
+    flex-direction:column;
+    font-size:0.7em;
+}
+.news ul{
+    margin:0;
+    padding:0;
+}
+.news ul li{
+    height:30px;
+    border-bottom:1px solid grey;
+    display:flex;
+    align-items:center;
+    color:#950198;
+}
+
+.news ul li:hover{
+    cursor:pointer;
+    color:#b5b5b5;
 }
 
 .latest-review, .past-reviews{
 
 	max-width:100%;
-	max-height:50%;
+	max-height:100%;
+    display: flex;
+    margin-bottom:40px;
+    
 }
 .sections {
     color: white;
@@ -142,25 +188,25 @@ a:hover {
 
 /*images*/
 .review-pic {
-    width:100%;
+    width:55%;
     height:300px;
 }
 
 /*///////////*/
 .caption {
-    background:rgba(242, 150, 232, 0.5);
-    height:100px;
+    height:100%;
     width:100%;
-    z-index:990;
-    font-size:0.8em;
-    position:relative;
-    top:-102px;
-    left:0px;
-    transition: font-size 0.5s ease-in;
-}
-.caption:hover {
     font-size:1em;
-    cursor:pointer;
+    padding:10px;
+}
+.caption-description  {
+    line-height:1.3em;
+    width:100%;
+    color: #353535;
+}
+.author{
+    font-size:0.5em;
+    color:#950198
 }
 h1,
 h2 {
@@ -173,28 +219,35 @@ h2 {
 .slide-in {
     background-color:#353535;
     color:white;
-    position:absolute;
-    top:100px;
-    left:70%;
-    width:400px;
-    height:800px;
+    position:fixed;
+    top:0;
+    left:0;
+    width:250px;
+    height:100%;
+     margin:0 0 0 -250px;
+    -moz-transition:all 200ms ease-in;
+    -webkit-transition:all 200ms ease-in;
+    -o-transition:all 200ms ease-in;
+    transition:all 200ms ease-in;
     z-index:999;
-    transform: translate(700px, 0px);
-    transition: transform 0.2s ease-in;
+    display:none;
+
 }
 .slide-in a {
     color:#fff;
 }
 .visibleNow {
-    transform: translate(0px, 0px);
+    display:block;
+    margin:0;
+
 }
 .profile {
     text-align:center;
     padding-top:50px;
 }
 .profile-pic {
-    width:150px;
-    height:150px;
+    width:80px;
+    height:80px;
     border-radius:50%;
 }
 .profile ul {
@@ -224,6 +277,10 @@ h2 {
 	color:#596f60;
 	cursor:pointer;
 }
+
+.nav-item{
+
+}
 .menu-items {
     display:none;
     padding-left:20px;
@@ -245,14 +302,25 @@ h2 {
     background-color:#353535;
     margin-top:200px;
     padding-top:50px;
+    font-size:0.6em;
 }
 .footer-nav {
     display: flex;
     justify-content:space-between;
+    width:80%;
+    margin:0 auto;
 }
 
 @media screen and (max-width:850px){
 
+
+    #wrapper{
+        width:90%;
+    }
+
+    .slide-in{
+        width:200px;
+    }
 
 
 	#block2{
@@ -268,12 +336,75 @@ h2 {
 		width:100%;
 	}
 
-	.news{
-		display:none;
-	}
 	.footer-nav{
 		flex-wrap:wrap;
 	}
+
+
+
+}
+
+
+@media screen and (max-width:500px){
+
+.sections {
+    font-size:0.7em;
+    max-width:100%;
+    height:20px;
+    left:-15px;
+}
+.featured-label{
+    max-width:100%;
+    left:-15px;
+    height:20px;
+    font-size:0.7em;
+}
+.featured-image{
+    height:200px;
+}
+
+
+.review-pic {
+    height:100px;
+}
+
+.caption {
+    
+    font-size:0.7em;
+}
+.caption-description{
+
+    display:none;
+}
+.latest-review, .past-reviews{
+    border-bottom:1px solid grey;
+    padding-bottom:20px;
+}
+#content{
+    flex-direction:column;
+}
+.news{
+    width:100%;
+}
+#content h5{
+    font-size:2em;
+    margin:0;
+    padding:0;
+
+}
+.top{
+    display:none;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

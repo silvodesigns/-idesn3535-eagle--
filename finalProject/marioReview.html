@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<head>
+	<title>IRate</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/ham.css">
+	<link rel="stylesheet" type="text/css" href="css/review.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="js/mygrading.js"></script>
+	<script src="js/template-engine.js"></script>
+	<script src="js/template.js.html"></script>
+	<link rel="stylesheet" type="text/css" href="slick/slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="slick/slick/slick-theme.css"/>
+	<script type="text/javascript" src="slick/slick/slick.min.js"></script>
+	<script>
+	//this function adds the change class to all divs with bar class inside hamburger div
+	function Menu(x) {
+	x.classList.toggle("change");
+		}
+
+	$(document).ready(function(){
+		//template for header and footer
+			$("#wrapper").prepend(getTemplate(headerTemplate,{title:'Home',class:'home'}));
+	$("body").append(getTemplate(footerTemplate,{title:'home', class:'footer'}));
+	$("body").prepend(getTemplate(slideInTemplate,{title:'home', class:'home'}));
+		//this function initiates the carousel slider using slick plugin
+	
+		$('.featured').slick({
+			arrows:false,
+			autoplay: true,
+			autoplaySpeed: 2000,
+			dots:true
+		});
+		//this click function makes the slide-in menu visible when the hamburger is clicked
+		$("#hamburgerMenu").click(function(){
+				$(".slide-in").toggleClass("visibleNow");
+				$("#wrapper").toggleClass("towrapper");
+				});
+		//this click function shows the menu items belonging to the category clicked in the slider in menu
+		$(".first-item").click(function(){
+			$(this).nextAll().toggleClass("show-menu-items");
+		});
+
+		
+		$( "#increase" ).on( "click", function() {
+ 				 $("#green" ).css( "width", "+=10" );
+				});
+
+		$( "#decrease" ).on( "click", function() {
+ 				 $("#green" ).css( "width", "-=10" );
+				});
+		$(".hide-comments").on("click",function(){
+
+					$("#comment-form , #listComments").toggleClass("hide-posts");
+
+
+		});
+  			    
+  			    
+	});
+		
+	</script>
+	<script>
+			function renderComments(){
+				const posts = getComments().comments;
+				console.log(posts);
+				//const five = posts.slice(Math.max(posts.length - 5, 1));
+				posts.forEach(function(r){
+					if(r){
+						const row =document.createElement('div');
+						row.innerHTML ="<h3>@ksilvest</h3>";
+						 row.append (` ${r.comment}`);
+						$("#listComments").prepend(row);
+					}
+
+				});
+
+			}
+			$(document).ready(function(){
+				renderComments();
+				$("#comment").on('click', function(){
+
+					const comment =$("#my-comment").val();
+					console.log(comment);
+					addComment({comment});
+					renderComments();
+					$("#my-comment").val("");
+				});
+			});
+		</script>
+</head>
+<body>
+	<div id="intro">
+		<video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
+			<source src="img/video.mp4" type="video/mp4">
+		</video>
+	</div>
+	<div id="wrapper">
+		<div class="review-img"><img src="img/marioM.jpg"></div>
+		<div class="title">
+			<h1>SUPER MARIO ODYSSEY:A <span>MASTERPIECE</span> FOR THE NINTENDO SWITCH. REVIEWED BY JOSE MONTERO.</h1>
+		</div>
+		<div id="text">
+			<div class="copy">
+				<p>
+				It’s all spun together into a generational masterpiece.
+				Odyssey looks like a straight successor to the Mario 64 and Sunshine line of sandbox 3D Marios, but it is much more than that. Naturally, it evokes, honors, and is sometimes directly inspired by the games that came before it in its characters, music, and mechanics. But it also has new things to say as well, like fusing classic-style 2D gameplay with the 3D world and using a completely new possession mechanic to add constant variety to Mario’s abilities and exploits.
+				That possession power, embodied by Mario’s new sidekick/headwear Cappy, is Odyssey’s big new idea.
+				</p>
+			</div>
+			<div class="agree">
+				<div id="increase"><img src="img/up.png" width="50"/><h2>Agree</h2></div>
+				<div id="decrease" ><img src="img/down.png" width ="50"><h2>Disagree</h2></div>
+			</div>
+		</div>
+		<div id="rating">
+				<div id="red">
+					<div id="green"></div>
+				</div>
+		</div>
+		<div id="comments">
+			<h2>Comments</h2><h5 class="hide-comments">Show/Hide</h5>
+			<form id="comment-form" onsubmit="return false;">
+				<textarea id="my-comment"/></textarea>
+			    <button id="comment">POST</button>
+			</form>
+		</div>
+		<div id="listComments">	
+		</div>
+	</div>
+
+</body>
+</html>

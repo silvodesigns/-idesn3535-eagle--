@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 	<title>IRate</title>
-	<meta name="viewport" content= "width=device-width" initial-scale="1">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -17,14 +17,23 @@
 	function Menu(x) {
 	x.classList.toggle("change");
 		}
-
 	$(document).ready(function(){
+
+	//API CALL
+		$.ajax({
+				url: "http://www.bvandorn.com/idesn-3535/apis/eagle.json",
+				success: function(response){
+				console.log(response);
+				for (i = 0; i < 5; i++){
+				$('.caption h1')[i].append(response.games[i].title);
+				$('.author')[i].append("Reviewed by  "+response.games[i].author);
+			      			}
+						}
+	});
 		//template for header and footer
-
 			$("#wrapper").prepend(getTemplate(headerTemplate,{title:'Home',class:'home'}));
-            $("body").append(getTemplate(footerTemplate,{title:'home', class:'footer'}));
-            $("body").append(getTemplate(slideInTemplate,{title:'home', class:'home'}));
-
+	$("body").append(getTemplate(footerTemplate,{title:'home', class:'footer'}));
+	$("body").prepend(getTemplate(slideInTemplate,{title:'home', class:'home'}));
 		//this function initiates the carousel slider using slick plugin
 	
 		$('.featured').slick({
@@ -36,7 +45,7 @@
 		//this click function makes the slide-in menu visible when the hamburger is clicked
 		$("#hamburgerMenu").click(function(){
 				$(".slide-in").toggleClass("visibleNow");
-				$("#wrapper").toggleClass("blur");
+				$("#wrapper").toggleClass("towrapper");
 				});
 		//this click function shows the menu items belonging to the category clicked in the slider in menu
 		$(".first-item").click(function(){
@@ -54,23 +63,25 @@
 			</div>
 			<div class="featured">
 				<div>
-					<img src="img/tombraiderJ.jpg" width="1000" height="300">
+					<img src="img/tombraiderJ.jpg" class="featured-image" >
 					<div class="read-label"><img  class="read-icon" src="img/read.svg"/><h2>Read</h2></div>
 				</div>
 				<div>
-					<img src="img/marioJ.jpg" width="1000" height="300">
+					<a href="marioReview.html">
+						<img src="img/marioJ.jpg" class="featured-image">
+						<div class="read-label"><img  class="read-icon" src="img/read.svg"/><h2>Read</h2></div>
+					</a>
+				</div>
+				<div>
+					<img src="img/pokemonJ.jpg" class="featured-image">
 					<div class="read-label"><img  class="read-icon" src="img/read.svg"/><h2>Read</h2></div>
 				</div>
 				<div>
-					<img src="img/pokemonJ.jpg" width="1000" height="300">
+					<img src="img/callofdutyJ.jpg" class="featured-image">
 					<div class="read-label"><img  class="read-icon" src="img/read.svg"/><h2>Read</h2></div>
 				</div>
 				<div>
-					<img src="img/callofdutyJ.jpg" width="1000" height="300">
-					<div class="read-label"><img  class="read-icon" src="img/read.svg"/><h2>Read</h2></div>
-				</div>
-				<div>
-					<img src="img/packmanJ.jpg" width="1000" height="300">
+					<img src="img/packmanJ.jpg" class="featured-image">
 					<div class="read-label"><img  class="read-icon" src="img/read.svg"/><h2>Read</h2></div>
 				</div>
 			</div>
@@ -81,49 +92,81 @@
 				<div class="latest-review">
 					<img class="review-pic" src="img/reviews.jpg">
 					<div class="caption">
-						<a href="#"><h1>Rise of the Tomb Raider:</h1></a>
+						<a href="#"><h1></h1></a>
 						<h2>A hero is reborn</h2>
+						<p class="caption-description">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam erat eros, ultrices ut libero a, convallis laoreet tortor. Morbi commodo eleifend enim ac faucibus. Mauris neque nibh, venenatis ut velit ac, accumsan congue mauris. Pellentesque pulvinar sem a sem vehicula semper.
+						</p>
+						<p class="author"></p>
 					</div>
 				</div>
 				<div class="past-reviews">
 					<img class="review-pic" src="img/marioM.jpg">
 					<div class="caption">
-						<a href="#"><h1>Super Mario Oddysey:</h1></a>
-					<h2>An instant MasterPiece</h2></div>
+						<a href="#"><h1></h1></a>
+						<h2>An instant MasterPiece</h2>
+						<p class="caption-description">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam erat eros, ultrices ut libero a, convallis laoreet tortor. Morbi commodo eleifend enim ac faucibus. Mauris neque nibh, venenatis ut velit ac, accumsan congue mauris. Pellentesque pulvinar sem a sem vehicula semper.
+						</p>
+						<p class="author"></p>
+					</div>
 				</div>
 				<div class="past-reviews">
-					<img class="review-pic" src="img/PokemonM.jpg">
+					<img class="review-pic" src="img/packmanM.png">
 					<div class="caption">
 						<a href="#"><h1>Pokemon B&W:</h1></a>
-					<h2>Perfect twist to a classic</h2></div>
+						<h2></h2>
+						<p class="caption-description">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam erat eros, ultrices ut libero a, convallis laoreet tortor. Morbi commodo eleifend enim ac faucibus. Mauris neque nibh, venenatis ut velit ac, accumsan congue mauris. Pellentesque pulvinar sem a sem vehicula semper.
+						</p>
+						<p class="author"></p>
+					</div>
 				</div>
 				<div class="past-reviews">
 					<img  class="review-pic" src="img/callofdutyM.jpg">
 					<div class="caption">
-						<a href="#"><h1>Call Of Duty:</h1></a>
-					<h2>WWII</h2></div>
+						<a href="#"><h1></h1></a>
+						<h2>WWII</h2>
+						<p class="caption-description">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam erat eros, ultrices ut libero a, convallis laoreet tortor. Morbi commodo eleifend enim ac faucibus. Mauris neque nibh, venenatis ut velit ac, accumsan congue mauris. Pellentesque pulvinar sem a sem vehicula semper.
+						</p>
+						<p class="author"></p>
+					</div>
 				</div>
 				<div class="past-reviews">
-					<img  class="review-pic"src="img/packmanM.png">
+					<img  class="review-pic" src="img/packmanM.png">
 					<div class="caption">
-						<a href="#"><h1>Packman Unpacked:</h1></a>
-					<h2>Retro to the max</h2></div>
+						<a href="#"><h1></h1></a>
+						<h2>Retro to the max</h2>
+						<p class="caption-description">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam erat eros, ultrices ut libero a, convallis laoreet tortor. Morbi commodo eleifend enim ac faucibus. Mauris neque nibh, venenatis ut velit ac, accumsan congue mauris. Pellentesque pulvinar sem a sem vehicula semper.
+						</p>
+						<p class="author"></p>
+					</div>
 				</div>
 			</div>
 			<div class="news">
-				<h3>NEWS</h3>
-				<a href="#"><h5>Nintendo Switch:release date</h5></a>
-				<a href="#"><h5>Sony tops monthly sales</h5></a>
-				<a href="#"><h5>Xbox One S: new model</h5></a>
-				<a href="#"><h5>Pokemon Go: global success</h5></a>
-				<a href="#"><h5>Naruto new generations: new</h5></a>
-				<a href="#"><h5>Nintendo Switch:release date</h5></a>
-				<a href="#"><h5>Sony tops monthly sales</h5></a>
-				<a href="#"><h5>Xbox One S: new model</h5></a>
-				<a href="#"><h5>Pokemon Go: global success</h5></a>
-				<a href="#"><h5>Naruto new generations: new</h5></a>
-				
-				
+				<ul>
+					<li><h1>NEWS</h1></li>
+					<li>Nintendo reveals a new console</li>
+					<li>Sony tops monthly sales</li>
+					<li>Naturo comes to a new era</li>
+					<li>Namco Bandai has new game</li>
+					<li>Tomb Raider is getting a sequel</li>
+					<li>Game awards winner list</li>
+					<li>Xbox One S: slimmer xbox one</li>
+					<li>The evolution of mobile gaming</li>
+					<li>Resident evil 7 release date</li>
+					<li>Nintendo reveals a new console</li>
+					<li>Sony tops monthly sales</li>
+					<li>Naturo comes to a new era</li>
+					<li>Namco Bandai has new game</li>
+					<li>Tomb Raider is getting a sequel</li>
+					<li>Game awards winner list</li>
+					<li>Xbox One S: slimmer xbox one</li>
+					<li>The evolution of mobile gaming</li>
+					<li>Resident evil 7 release date</li>
+				</ul>
 			</div>
 		</div>
 	</div>
